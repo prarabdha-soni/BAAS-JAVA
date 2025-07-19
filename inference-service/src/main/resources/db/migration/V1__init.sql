@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS inference_example (id SERIAL PRIMARY KEY, name VARCHAR(255));
