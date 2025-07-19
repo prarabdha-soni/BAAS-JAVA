@@ -1,0 +1,73 @@
+version: '3.8'
+services:
+  config-service:
+    build: ./config-service
+    ports:
+      - "8888:8888"
+  discovery-service:
+    build: ./discovery-service
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config-service
+  gateway-service:
+    build: ./gateway-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - config-service
+      - discovery-service
+  admin-service:
+    build: ./admin-service
+    ports:
+      - "9000:9000"
+    depends_on:
+      - discovery-service
+  user-service:
+    build: ./user-service
+    ports:
+      - "9001:9001"
+    depends_on:
+      - discovery-service
+  project-service:
+    build: ./project-service
+    ports:
+      - "9002:9002"
+    depends_on:
+      - discovery-service
+  model-service:
+    build: ./model-service
+    ports:
+      - "9003:9003"
+    depends_on:
+      - discovery-service
+  inference-service:
+    build: ./inference-service
+    ports:
+      - "9004:9004"
+    depends_on:
+      - discovery-service
+  vector-service:
+    build: ./vector-service
+    ports:
+      - "9005:9005"
+    depends_on:
+      - discovery-service
+  billing-service:
+    build: ./billing-service
+    ports:
+      - "9006:9006"
+    depends_on:
+      - discovery-service
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "9007:9007"
+    depends_on:
+      - discovery-service
+  audit-service:
+    build: ./audit-service
+    ports:
+      - "9008:9008"
+    depends_on:
+      - discovery-service 

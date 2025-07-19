@@ -1,0 +1,25 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: admin-service
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    discovery:
+      enabled: true
+    config:
+      uri: http://localhost:8888
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/ 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" 

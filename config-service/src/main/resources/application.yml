@@ -1,0 +1,19 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:../config-repo
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.* 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" 

@@ -1,0 +1,23 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: discovery-service
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+  server:
+    wait-time-in-ms-when-sync-empty: 0 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" 
